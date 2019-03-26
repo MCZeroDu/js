@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;padding: 0;list-style: none;
+				}
+			#my_header{
+				width: 100%;height: 50px;background: #CCCCCC; overflow: hidden;
+			}
+			#my_header .wodetian{float: right;}
+			#my_header p{width: 28%;height: 50px;line-height: 50px;float: right;background: url(img/ico.gif)no-repeat 110px 24px;}
+			#my_header span{padding:0 15px 0 15px; margin-left: 25px;cursor: pointer;line-height: 50px;}
+			.kuang{width: 80px;padding-top:5px;padding-bottom:5px;float: right;background: aliceblue;margin-right: 20%;text-align: center;display: none;}
+			.Shenti{width: 100%;height:704px;overflow: hidden;background: url(img/0.jpg) no-repeat;background-size:cover;}
+			.kuang ul li{padding-top: 3px;cursor: pointer;}
+			.Shenti .inner{z-index: 999;  display: none;  width: 500px;height: 300px;background: gainsboro;position: absolute;margin: auto;top: 0;left: 0;right: 0;bottom: 0;}
+			.Shenti .myp{width: 100%;height: 20px;text-align: center;line-height: 20px;padding-top: 3px;padding-bottom: 3px;background: #ccc;}
+			.Shenti .myp .wodetu{width: 4%;float: right;margin-right: 5px;}
+			.Shenti .inner .lab{font-size:15px;letter-spacing: 12px;}
+			.Shenti .inner .lab1{font-size:15px;letter-spacing: 12px;position: relative;bottom: 65px;}
+			.Shenti .inner #We{width: 40%;height: 20px;}
+			.Shenti .inner .anniu button{width: 20%;padding-top: 5px;padding-bottom: 5px;font-size: 15px;background: aquamarine;border: none;outline: none;margin-left: 100px;margin-top: 50px;}
+			.Shenti .nima{display: none; width: 500px;height: 200px;background: #CCCCCC;margin-left: 500px;margin-top: 50px;}
+			.Shenti .nima .niba{width: 100%; background:#7FFFD4;height: 20px;}
+			.Shenti .nima .NR{width: 100%;height: 100%;font-size: 15px;}
+			.Shenti .nima .Woinner{float: left;padding-left: 5px;}
+			#wode{z-index: 1;  width: 100%;height: 100%;position: absolute;top: 0;left: 0;bottom: 0;right: 0;background:#F0F8FF;opacity: .3;display: none;}
+			.Shenti .nima .Sz{float: right;line-height: 20px;margin-right: 10px;}
+			.Shenti #HFu{display: none;}	
+		</style>
+	</head>
+	<body>
+		<header id="my_header">
+			<p class="nav"><span class="ospan">个人中心</span></p><span class="wodetian">登录</span><span class="wodetian">注册</span>
+		</header>
+		<div class="Shenti">
+			<div class="kuang">
+				<ul>
+					<li class="wozi">发文</li>
+					<li class="HanF">换肤</li>
+					<li>帮助</li>
+					<li class="tuichu">退出</li>
+				</ul>
+			</div>
+			<div class="inner">
+				<p class="myp">发表微博 <img class="wodetu" src="img/Gb.png"/></p>
+				<p style="margin-left: 19px;margin-top: 20px;"><label class="lab">标题：</label><input type="text" name="" id="We" value="" /><span style="margin-left: 15px;">(*不可为空)</span></p>
+				<p style="margin-left: 19px;margin-top: 20px;"><label class="lab1">内容：</label><textarea name="" rows="" cols="" style="width: 50%;height: 80px;"></textarea>
+				<span style="margin-left: 15px;position: relative;bottom: 23px;">(*不可为空)</span></p>
+				<p class="anniu"><button>发表</button></p>
+			</div>
+			<div id="wode" class="wodeww">
+				
+			</div>
+			<div id="HFu" class="Dr">
+				<p class="Huan">换肤<img id="wodetu" src="img/Gb.png"/></p>
+				<ul>
+					<li class="oli"><img class="oali" src="img/0.jpg"/>
+					<p class="tuzi">风景One</p></li>
+					<li class="oli"><img class="oali" src="img/01.jpg"/>
+					<p class="tuzi">风景Two</p></li>
+					<li class="oli"><img class="oali" src="img/04.jpg"/>
+					<p class="tuzi">风景Three</p></li>
+					<li class="oli"><img class="oali" src="img/05.jpg"/>
+					<p class="tuzi">风景Four</p></li>
+					<li class="oli"><img class="oali" src="img/02.jpeg"/>
+					<p class="tuzi">风景Five</p></li>
+					<li class="oli"><img class="oali" src="img/03.jpg"/>
+					<p class="tuzi">风景Six</p></li>
+					<li class="oli"><img class="oali" src="img/06.jpg"/>
+					<p class="tuzi">风景Seven</p></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/Yin.js"></script>
+<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/TuoZhuai.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+		var my_div = document.getElementById('HFu');
+		//获取 图片
+		var Qxiao  = document.getElementById('wodetu');
+			Qxiao.onclick = function(){
+				my_div.style.display = "none";
+				fg.style.display = "none";
+			}
+		var oul = my_div.getElementsByTagName('ul')[0];
+		var aimg = oul.getElementsByTagName('img');
+		function tab(index){
+			for (var i = 0 ; i<aimg.length;i++) {
+			shen.style.background =  "url("+aimg[index].src+")"; 
+			}
+		}
+		var currentIndex = 0;
+		for(var i = 0; i < aimg.length; i++){
+			aimg[i].index = i;
+//			console.log(oali[i].index)
+				aimg[i].onclick = function(){
+				tab(this.index);
+				setCookie("nimaa",this.index,setCookieDate(2));
+				}
+		}
+		currentIndex = getCookie("nimaa");
+			if(currentIndex){
+			    tab(currentIndex)
+			}
+// 点击 隐藏
+var hunfu = ku.getElementsByClassName('HanF')[0];//获取换肤的点击元素
+//console.log(hunfu);
+var lal = ku.getElementsByClassName('tuichu')[0];
+//console.log(lal)
+lal.onclick = function(){
+	my_div.style.display = "none";
+	ku.style.display = "none";
+}
+hunfu.onclick = function(){
+	my_div.style.display = "block";
+	fg.style.display = "block";
+}
+</script>

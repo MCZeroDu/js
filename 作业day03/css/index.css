@@ -1,0 +1,38 @@
+#HFu{
+	z-index: 999;
+	width: 660px;
+	height: 300px;
+	background: #fff;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;	
+}
+#HFu ul li{
+	width: 149px;
+	float: left;
+	list-style: none;
+	margin-left:2%;
+	margin-top:10px;  
+}
+#HFu .Huan{
+	width: 100%;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	background: #CCCCCC;
+	padding: 8px 0;
+	color: #FFFFFF;
+	font-weight: 500;
+}
+#HFu .Huan #wodetu{
+	width: 3%;float: right;margin-right: 6px;line-height: 6px;
+}
+#HFu ul li img{
+	width: 100%;
+}
+#HFu ul li .tuzi{
+	text-align: center;
+} 
