@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#box1{width: 150px;height: auto;margin: auto;}
+			#btn{
+			 	width: 150px;height: auto; background: #CCCCCC;margin: auto;display: none;
+			}
+			input{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<input type="checkbox" name="" id="" value="" /><span>两周内自动登录</span>
+		</div>
+		 <div id="btn">
+		 	<p>为了你的安全,请不要怎么......</p>
+		 </div>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn = document.getElementsByTagName('input')[0];
+	var box = document.getElementById("btn");
+	btn.onmousemove = function (){
+		box.style.display="block";
+	}
+	btn.onmouseout = function (){
+		box.style.display="none";
+	}
+</script>

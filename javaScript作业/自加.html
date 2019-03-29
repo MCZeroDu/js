@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>累加按钮</title>
+	</head>
+	<body>
+		<input type="button" value="0">
+	</body>
+</html>
+<script type="text/javascript">
+	//获取按钮元素
+	var oBut = document.getElementsByTagName("input")[0];
+	//设置累加器
+	var i = 0;
+	//给按钮添加点击事件
+	oBut.onclick = function(){
+		oBut.value = ++i;
+	}
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{width: 700px;height: 100px;margin: 0 auto;}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">xxx点xxx分xxx秒</div>
+	</body>
+</html>
+<script type="text/javascript">
+	//补零函数
+	var otime = document.getElementById('box');
+	function zero(n) {
+	    if(n < 10){
+	        return "0" + n;
+	    }else{
+	        return "" + n;
+	    }
+	}
+	function time(){
+		var Daa = new Date();
+		 var shi = Daa.getHours()//时
+		 var fen = Daa.getMinutes()//分
+		 var miao= Daa.getSeconds()//秒
+		 otime.innerHTML = zero(shi)+"点"+zero(fen)+"分"+zero(miao);
+	}
+	time();
+	    setInterval(function () {
+        time();
+    },1000);
+</script>

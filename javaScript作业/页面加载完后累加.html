@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>页面加载完后累加</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//获取body元素
+	var oBody = document.body;
+	//设置一个自加属性
+	var i = 0;
+	//封装一个自加函数
+	function updateNum(){
+		oBody.innerHTML = ++i	
+	}
+	//给自加函数添加定时器
+	setInterval(updateNum, 1000);
+</script>

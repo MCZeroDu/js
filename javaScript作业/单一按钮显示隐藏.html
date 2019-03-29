@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			/*#my_div ul li a{text-decoration: none;}*/
+			h3{width: 200px;height: 35px;background: #CCCCCC;line-height: 35px;text-align: center;margin: auto;}
+			#my_div{width: 200px;height: auto;background: darkcyan;margin: auto;}
+			#my_div ul{width: 200px}
+			#my_div ul li{list-style: none;text-align: center;height: 30px;line-height: 30px;width:200px;}
+			#my_div ul li:hover{background: cadetblue;color: #fff;}
+		</style>
+	</head>
+	<body>
+		<h3 id="oh3">播放列表...</h3>
+		<div id="my_div">
+			<ul>
+				<li>玩家之徒-蔡依林</li>
+				<li>原谅我就..-戴佩妮</li>
+				<li>猜不透-叮当</li>
+				<li>玩家之徒-蔡依林</li>
+				<li>原谅我就..-戴佩妮</li>
+				<li>猜不透-叮当</li>
+				<li>玩家之徒-蔡依林</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var ee = document.getElementById('oh3');
+	var odiv = document.getElementById('my_div');
+	function fun(a,b){
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(a,null)[b];
+        } else{
+            return window.getComputedStyle[b];
+        }
+    }
+	ee.onclick = function(){
+		if (fun(odiv,"display") == "block") {
+			odiv.style.display = "none";
+		} else{
+			odiv.style.display = "block";
+		}
+	}
+</script>

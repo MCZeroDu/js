@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,body,div,ul{margin: 0;padding: 0;}
+			#my_div{width: 800px;height:200px; border: black solid 1px;margin: 0 auto;};
+			#my_div ul{float: left;}
+			#my_div ul li{width: 80px;height: 80px;background: #7FFFD4;float: left;text-align: center;list-style: none;line-height: 80px;margin-left: 40px;margin-top: 15px;}
+			#my_div ul .my_li{background: #FF8C00;color: #ffffff;}
+			.my_he{width: 800px;height: auto;text-align: center;};
+		</style>
+	</head>
+	<body>
+		 <div id="my_div">
+		 	<ul>
+		 		<li class="my_li">第一天</li>
+		 		<li>第二天</li>
+		 		<li>第三天</li>
+		 		<li>第四天</li>
+		 		<li>第五天</li>
+		 		<li>第六天</li>
+		 		<li>第七天</li>
+		 		<li>第八天</li>
+		 		<li>第九天</li>
+		 		<li>第十天</li>
+		 		<li>第十一天</li>
+		 		<li>第十二天</li>
+		 	</ul>
+		 </div>
+		 <div class="my_he">
+		 	<h3>显示日期</h3>
+		 	<p>第一天内容</p>
+		 </div>
+	</body>
+	<script type="text/javascript">
+		var oArray = [
+        "元旦：1月1日至3日放假三天。",
+        "春节：2月2日至8日放假7天。",
+        "妇女节：3月8日妇女节，与我无关。",
+        "清明节：4月3日至5日放假3天",
+        "劳动节：4月30日至5月2日放假3天。",
+        "端午节：6月4日至6日放假3天。",
+        "小暑：7月7日小暑。不放假。",
+        "七夕节：8月6日七夕节。不放假。",
+        "中秋节：9月10日至12日放假3天。",
+        "国庆节：10月1日至7日放假7天。",
+        "立冬：11月8日立冬。不放假。",
+        "艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"];
+        var myhe = document.getElementById('my_div');
+        var woli = myhe.getElementsByTagName('li');
+        var innerw = document.getElementsByClassName('my_he')[0];
+        var innerp = innerw.getElementsByTagName('p')[0];
+        innerp.innerHTML = oArray[0];
+//      console.log(innerp.length);
+//      console.log(woli.length);
+		for(var i=0; i < woli.length; i++){
+			woli[i].index = i;
+			woli[i].onclick = function(){
+//				console.log(i);
+				for (var i=0;i< woli.length;i++) {
+					woli[i].className = "";
+				}
+				this.className = "my_li";
+				innerp.innerHTML = oArray[this.index];
+			}
+		}
+	</script>
+</html>
