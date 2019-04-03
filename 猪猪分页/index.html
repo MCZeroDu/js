@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;margin: 0;
+			}
+			#Zong{width: 700px;height: auto;margin: auto;}
+			#my_div{width: 900px;height:650px;margin: auto;border: 1px solid #EEEEEE;}
+			#my_div ul {width: 244px;height: auto;float: left;border: 1px solid #EEEEEE;}
+			#my_div ul li{list-style: none;padding: 5px 10px;width:96%;}
+			#Dibu{width: 500px;height: 50px;border: 1px solid #eee;text-align: center;margin:50px auto;overflow: hidden;}
+			#Dibu span{cursor: default; text-align: center;padding: 5px 10px;border: 1px solid #ccc;line-height: 50px;border-radius:5px;}
+			#Dibu  a{padding: 3px 20px; border-radius:5px;text-decoration: none;color: black;}
+			#Dibu .evt{background: red;color: #fff;}
+			#my_div ul li img{width: 100%;}
+		</style>
+	</head>
+	<body>
+		
+		<div id="Zong">
+		<div id="my_div">
+			<!--<ul class="ul">
+				<li><img src="http://img.boqiicdn.com/Data/BK/P/img99961410946559.jpg"/></li>
+				<li class="name">name : 腊肠犬</li>
+				<li class="engName">engName : Dachshund</li>
+				<li class="price">price : 2000起</li>
+			</ul>			    
+			<ul class="ul">
+				<li><img src="http://img.boqiicdn.com/Data/BK/P/img22101406708896.jpg"/></li>
+				<li class="name">name : 腊肠犬</li>
+				<li class="engName">engName:Dachshund</li>
+				<li class="price">price : 2000起</li>
+			</ul>			        
+			<ul class="ul">
+				<li><img src="http://img.boqiicdn.com/Data/BK/P/img22101406708896.jpg"/></li>
+				<li class="name">name : 腊肠犬</li>
+				<li class="engName">engName:Dachshund</li>
+				<li class="price">price : 2000起</li>
+			</ul>			    
+			<ul class="ul">
+				<li><img src="http://img.boqiicdn.com/Data/BK/P/img22101406708896.jpg"/></li>
+				<li class="name">name : 腊肠犬</li>
+				<li class="engName">engName:Dachshund</li>
+				<li class="price">price : 2000起</li>
+			</ul>			    		-->
+		</div>
+		<div id="Dibu">
+			<span class="One" id="Sang">上一页</span>
+			<a href="javascript:;" class="evt">1</a>
+			<a href="javascript:;">2</a>
+			<a href="javascript:;">3</a>
+			<a href="javascript:;">4</a>
+			<a href="javascript:;">5</a>
+			<a href="javascript:;">6</a>
+			<span class="One" id="Xia">下一页</span>
+		</div>
+		</div>
+	</body>
+</html>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var  Dibu = document.getElementById('Dibu');
+	var  Oa   = Dibu.getElementsByTagName('a');
+	var  mydi  = document.getElementById('my_div');
+	var  sh	= document.getElementById("Sang");
+	var  xia = document.getElementById("xia");
+	var  num = 0;
+	//页面加载 执行 一次
+		ajax({
+				url : "https://api.apishop.net/common/catFamily/queryCatList",
+				method : "post",
+				data : {
+					apiKey :"9KguC2e16bc8e41e7814e2fee70291c039507f39ca0673f",
+					page : 1,
+					pageSize : 4
+				},
+				success : function(response) {
+//					console.log(response);
+					var data = JSON.parse(response).result.petFamilyList;
+					console.log(data);
+					for (var i = 0;i < data.length;i++) {
+						var  ul = document.createElement('ul');
+						var  sa = "<li><img src="+ data[i].coverURL +" /></li>\n"+
+									"<li class=name>name : "+ data[i].name +"</li>\n" +
+									"<li class=engName>engName :" + data[i].engName +"</li>\n" +
+									"<li class=price>price :"+ data[i].price +"</li>";
+						ul.innerHTML = sa;
+						mydi.appendChild(ul);
+					}
+				},
+				async  : true
+		});
+		
+    	for (var i = 0; i<Oa.length;i++) {
+    	Oa[i].index = i;
+    	Oa[i].onclick = function (){
+//  		this.className = "evt";
+			for (var i = 0; i <Oa.length;i++) {
+				Oa[i].className = "";
+			}
+			
+			this.className = "evt";
+			var  that = this;
+//			if((this.index+1) != 1){
+			ajax({
+				url : "https://api.apishop.net/common/catFamily/queryCatList",
+				method : "post",
+				data : {
+					apiKey :"9KguC2e16bc8e41e7814e2fee70291c039507f39ca0673f",
+					page : that.index + 1,
+					pageSize : 6
+				},
+				success : function(response) {
+//					console.log(response);
+					mydi.innerHTML = "";
+					var data = JSON.parse(response).result.petFamilyList;
+//					console.log(data);
+					for (var i = 0;i < data.length;i++) {
+						var  ul = document.createElement('ul');
+						var  sa = "<li><img src=" + data[i].coverURL + " /></li>\n"+
+									"<li class=name>name : "+ data[i].name +"</li>\n" +
+									"<li class=engName>engName :" + data[i].engName +"</li>\n" +
+									"<li class=price>price :"+ data[i].price +"</li>";
+						ul.innerHTML = sa;
+						mydi.appendChild(ul);
+					}
+				},
+				async  : true
+			});
+			}
+    	}
+</script>
