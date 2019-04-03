@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 100px;height: 100px;border: #000000 1px solid;font-size: 50px;color: #FFFF00;text-align: center;line-height: 100px;}
+			.my_p{font-size: 50px;color: #000000;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<input type="button" name="" id="kai" value="开始" />
+		<input type="button" name="" id="Jie" value="结束" />
+		<p class="my_p"></p>
+	</body>
+</html>
+<script type="text/javascript">
+	var myiv = document.getElementById('box');
+	var kbtn = document.getElementById('kai');
+	var jbtn = document.getElementById('Jie');
+	var my_p = document.getElementsByClassName('my_p')[0];
+	var num;
+	function suijishu(min,max){
+		num = parseInt(Math.random()*(max-min+1)+min);
+		return num;
+	}
+	var time;
+	var sum; 
+	kbtn.onclick = function(){
+		time = setInterval(function(){ 
+			sum = suijishu(1,6);
+//			console.log(sum); 
+			myiv.innerHTML = num;
+		},100)
+	}
+	jbtn.onclick=function(){
+		clearInterval(time);
+		if (sum <= 3) {
+			my_p.innerHTML = "小";
+		} else{
+			my_p.innerHTML = "大";
+		}
+	}
+</script>

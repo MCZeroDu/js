@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div_one{
+				width: 200px;
+				height: 200px;
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div_one">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var odiv = document.getElementsByClassName("div_one")[0];
+		setInterval(function(){
+			odiv.style.display = "none";
+		},3000);
+	</script>
+</html>

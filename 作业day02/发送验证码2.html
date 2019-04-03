@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="发送验证码" />
+	</body>
+</html>
+<script type="text/javascript">
+	var btn = document.getElementById('btn');
+	var sum = 5;
+	var	time;
+	btn.onclick = function(){
+		btn.value = sum + "秒后发送验证码";
+		btn.disabled = true;
+		var a = this;
+		time = setInterval(function(){
+			sum--;
+			a.value = sum + "秒后发送验证码";
+			if (sum == 0) {
+				btn.value = "重新发送";
+				sum = 5;
+				btn.disabled = false; 
+				clearInterval(time);
+			}
+		},1000)
+		
+	}
+</script>

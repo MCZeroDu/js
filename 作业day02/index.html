@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			html,body,div{margin: 0;padding: 0;}
+			#my_div{width: 150px;height: 150px;border:red 1px solid; font-size:50px;line-height: 150px;text-align: center;}
+			.my_p{font-size: 50px;color: yellow;}
+		</style>
+	</head>
+	<body>
+		<div id="my_div"></div>
+		<input type="button" name="kai" id="kai" value="开始" />
+		<input type="button" name="kai" id="Jie" value="结束" />
+		<p class="my_p"></p>
+	</body>
+</html>
+<script type="text/javascript">
+	var my_div = document.getElementById('my_div');
+	var kai = document.getElementById('kai');
+	var jie = document.getElementById('Jie');
+//	console.log(jie)
+	var my_p = document.getElementsByClassName('my_p')[0];
+//	console.log(my_p);
+	var sum;
+	//封装一个获取随机数的函数；
+	function getRandom(min,max){
+		sum = parseInt(Math.random()*(max-min+1)+min);
+		return (sum);
+	}
+	var time;
+	var num;
+	kai.onclick = function(){
+		time = setInterval(function(){
+			num = getRandom(1,6);
+//			console.log(num);
+			my_div.innerHTML = num;
+		},20)
+	}
+	jie.onclick = function(){ 
+		clearInterval(time);//清除定时器
+		if (num <= 3) {
+			my_p.innerHTML = "小";
+		} else{
+			my_p.innerHTML = "大";
+		}
+	}
+</script>

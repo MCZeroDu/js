@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		   img{position: absolute;display: none;}
+		   .imgsa{display: block;}
+		   #box .my_div ul{position: fixed;margin-left: 55px;margin-top: 185px;}
+		   #box .my_div ul li{list-style:none; width: 10px;height: 10px;border-radius:50%;background: #FFFF00;float: left;margin-left: 20px;}
+		   #box .my_div ul .my_li{background: #FF0000;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<button class="zuo"><</button> <button class="you">></button>
+			<img src="img/FeiLei_10.png"class="imgsa"/>
+			<img src="img/FeiLei_12.png"/>
+			<img src="img/FeiLei_16.png"/>
+			<img src="img/FeiLei_17.png"/>
+		<div class="my_div">
+			<ul>
+				<li class="my_li"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var mydiv = document.getElementById('box');
+	var tu = mydiv.getElementsByTagName('img');
+	var myhe = mydiv.getElementsByClassName('my_div')[0];
+	var ali = myhe.getElementsByTagName('li');
+	var index=0;
+	var timer = null;
+	for (var i = 0; i<ali.length;i++) {
+		ali[i].index=i;
+		
+		ali[i].onmousemove = function()	{
+			clearInterval(timer);
+			index = this.index;
+			net(this.index);
+		}
+		ali[i].onmouseout = function()	{
+			timer = setInterval(move,1000);
+		}
+	}
+	function net(index){
+		for (var i=0; i<ali.length;i++) {
+			ali[i].className = "";
+			tu[i].className = "";
+		}
+		ali[this.index].className = "my_li";
+		tu[this.index].className = "imgsa"; 
+	}
+	for (var i = 0; i<ali.length;i++) {
+		move();
+	}
+	function move(){
+		index++;
+		if (index > 3) {
+			index = 0;
+		}
+		net(index);
+	};
+	
+	timer = setInterval(move,1000);
+</script>
