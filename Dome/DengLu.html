@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{width: 300px; height: 150px; border: 1px solid black;text-align: center;margin: 100px auto;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>
+            <span>账号：</span>
+            <input type="text" id="uname">
+        </p>
+        <p>
+            <span>密码：</span>
+            <input type="text" id="pword">
+        </p>
+        <button id="btn">登录</button>
+    </div>
+</body>
+</html>
+<script src="./js/ajax.js"></script>
+<script>
+    var uname = document.getElementById("uname");
+    var pword = document.getElementById("pword");
+    var btn = document.getElementById("btn");
+    btn.onclick = function(){
+        ajax({
+            url :"http://localhost:8021/",
+            method : "post",
+            data :{
+                uname : uname.value,
+                pword : pword.value
+            },
+            success : function(response){
+                var data =JSON.parse(response);
+                if(data.code == 0){
+                    location.href = "http://www.baidu.com";
+                    localStorage.setItem("token",data.token);
+                }else{
+                    alert("用户名或密码错误")
+                }
+            },
+            async : true
+        })
+    }
+    // if(localStorage.getItem("token")){
+    //     location.href = "http://www.baidu.com"
+    // }else{
+    //     location.href = "DengLu.html"
+    // }
+</script>
