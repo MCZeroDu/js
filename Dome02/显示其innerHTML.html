@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			.qdiv{width: 200px;height: 50px;border: 1px solid #CCCCCC;line-height: 50px;margin: 50px;}
+			#inner{width:300px;height:150px;background:#fff;text-align: center;display: none;}
+			#inner .btn{margin-top: 5px;width: 70px;padding: 5px;background: blue;color: #FFFFFF;border: none;border-radius: 5px;}
+			#inner .myp{width: 100%;height:25px;background: darkcyan;line-height: 25px;}
+			#inner #box1{width: 100%;height: 90px;background:#fff ;} 
+		</style>
+	</head>
+	<body>
+		<div id="inner">
+			<p class="myp">此网页显示</p>
+			<div id="box1">
+				
+			</div>
+			<button class="btn" id="btn">确定</button>
+		</div>
+	 <p class="qdiv">
+	 	和WWIWWI我和囧
+	 </p>
+	 <p class="qdiv">
+	 	huiihi
+	 </p>
+	 <p class="qdiv">
+	 	和WWIWWI我和囧
+	 </p>
+	</body>
+</html>
+<script type="text/javascript">
+	var obx = document.getElementsByClassName('qdiv')
+//	console.log(obx.length);
+ 	var my_div = document.getElementById('inner');
+	var box = document.getElementById('box1');
+//	console.log(obx)
+	var btn = document.getElementById('btn');
+//	console.log(btn)
+	for (var i = 0; i < obx.length;i++) {
+		obx[i].onclick = function(){
+			my_div.style.display = "block";
+		    box.innerHTML = this.innerHTML;
+		}
+	}
+	btn.onclick = function(){
+		my_div.style.display = "none";
+	}
+</script>

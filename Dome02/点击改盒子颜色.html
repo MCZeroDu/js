@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.G{width: 100%;text-align: center;}
+			input{}
+			#box1{width: 700px;height: 200px;margin: auto;}
+			#box1 .box{width: 200px;height: 200px;background: #000000;float: left;margin: 10px 0 0 20px;}
+		</style>
+	</head>
+	<body>
+		  <div class="G"><input type="button" id="" value="点击将盒子颜色变成红色" /></div>
+		  
+		<div id="box1">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>	
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var inp = document.getElementsByTagName('input')[0];
+	var box = document.getElementsByClassName('box');
+	
+   inp.onclick = function(){
+	for (var i = 0; i < box.length;i++) {
+		box[i].style.background = "red";
+		}
+	}
+//	inp.onclick = function(){
+//		box.style.background = "red";
+//	}
+</script>

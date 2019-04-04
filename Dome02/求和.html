@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.sum{font-size: 45px;color: darkorange;};
+		</style>
+	</head>
+	<body>
+		<div class="my_div">
+			<input type="text" name="" id="" value="1,2,3"/>
+			<button>求和</button>
+			<p class="sum"></p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var mydiv = document.getElementsByClassName('my_div')[0];
+//		console.log(mydiv);
+		var myiput = mydiv.getElementsByTagName('input')[0];
+//		console.log(myiput);
+		var btn = mydiv.getElementsByTagName('button')[0];
+		var he = mydiv.getElementsByTagName('p')[0];
+//		console.log(he);
+		//获取文本框中的内容 value;
+		btn.onclick = function(){
+			var sum = 0;
+			var WOvalue = myiput.value;
+			var hehe = WOvalue.split(",");
+			for (var i = 0; i < hehe.length; i++) {
+				sum = sum + parseInt(hehe[i]);
+			}
+			he.innerHTML = sum;
+		}
+		
+	</script> 
+</html>

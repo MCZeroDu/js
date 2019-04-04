@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="" name="" id="ipt1" value="" />
+		<input type="button" id="btn" value="是否为两位数" />
+	</body>
+</html>
+<script type="text/javascript">
+	var ipt1 = document.getElementById("ipt1");
+	var btn = document.getElementById("btn");
+	var num = parseInt(ipt1.value);
+	btn.onclick = function(){
+		if(isNaN(ipt1.value)){
+			alert("请输入数字");
+		}else{
+			if(ipt1.value.length == 2){
+				alert("√，这是两位数");
+			}else{
+				alert("这是"+ipt1.value.length+"位数");
+			}
+		}
+		
+	}
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#my_div{width: 200px;height: 200px;background: #000000;color:#FFFFFF;font-size: 15px;text-align: center;padding-top: 5px;}
+		</style>
+	</head>
+	<body>
+		<p><lable>属性名:</lable><input id="btn1" type="text" value="background" /></p>
+		<p><lable>属性值:</lable><input id="btn2" type="text" value="blue" /></p>
+		<p><button id="QUE">确定</button>
+			<button id="ChZhi">重置</button></p>
+		<div id="my_div">
+			在上方输入"属性名"及"属性值"，点击确定按钮查看效果
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn1 = document.getElementById('btn1');//属性名输入框
+	var btn2 = document.getElementById('btn2');//属性值输入框
+	var Qve  = document.getElementById('QUE');//确定按钮
+	var ChZhi = document.getElementById('ChZhi');//重置按钮
+	var obx = document.getElementById('my_div');//盒子
+	function setStyle(ele,Style,value){
+		ele.style[Style] = value;
+	}
+	
+	Qve.onclick = function(){
+		setStyle(obx,btn1.value,btn2.value);
+	}
+	
+	ChZhi.onclick = function(){
+		obx.removeAttribute("style");
+		alert(111);
+	}
+</script>

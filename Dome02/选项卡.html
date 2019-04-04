@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	<style type="text/css">
+		html,body,div,ul,li{margin:0;padding:0;}
+		#my_div{width: 500px;height: auto;overflow: hidden;margin: 0 auto;};
+		#my_div .fe{width:100%;}
+		#my_div .fe li{width: 33.3%;height: 30px;color: #FFFFFF; float: left;list-style: none;text-align: center;background: #000000;line-height: 30px;cursor: pointer;
+		}
+		#my_div .fe #di{margin-left: 0;}
+		#my_div .fe .one{background:  #FF8C00;color: #FFFFFF;}
+		.container{width: 500px;height: auto;margin: 0 auto;border: #7FFFD4 1px solid;}
+		.container ul{padding-left: 10px;list-style: none;padding-top: 10px;}
+		.container ul li{width: 100%;height: auto;}
+		.container .con_show{display: none;}
+	</style>
+	</head>
+	<body>
+		<div id="my_div">
+			<ul class="fe" id="di">
+				<li class="one">第一页</li>
+				<li>第二页</li>
+				<li>第三页</li>
+			</ul>
+		</div>
+		<div class="container">
+            <ul class="con_show">
+                <li>网页特效原理分析</li>
+                <li>响应用户操作</li>
+                <li>提示框效果</li>
+                <li>事件驱动</li>
+                <li>元素属性操作</li>
+                <li>动手编写第一个JS特效</li>
+                <li>引入函数</li>
+                <li>网页换肤效果</li>
+                <li>展开/收缩播放列表效果</li>
+            </ul>
+            <ul>
+                <li>改变网页背景颜色</li>
+                <li>函数传参</li>
+                <li>高重用性函数的编写</li>
+                <li>126邮箱全选效果</li>
+                <li>循环及遍历操作</li>
+                <li>调试器的简单使用</li>
+                <li>典型循环的构成</li>
+                <li>innerHTML的使用</li>
+                <li>戛纳印象效果</li>
+                <li>数组</li>
+                <li>字符串连接</li>
+            </ul>
+            <ul>
+                <li>JavaScript组成：ECMAScript、DOM、BOM，JavaScript兼容性来源</li>
+                <li>JavaScript出现的位置、优缺点</li>
+                <li>变量、类型、typeof、数据类型转换、变量作用域</li>
+                <li>闭包：什么是闭包、简单应用、闭包缺点</li>
+                <li>运算符：算术、赋值、关系、逻辑、其他运算符</li>
+                <li>程序流程控制：判断、循环、跳出</li>
+            </ul>
+        </div>
+        
+		<script type="text/javascript">
+	var he = document.getElementById('my_div');
+	var ali = he.getElementsByTagName('li');
+	var he1 = document.getElementsByClassName("container")[0];
+	var ali1 = he1.getElementsByTagName('ul');
+//	console.log(ali1.length);
+//	console.log(li);
+	for (var i=0;i<ali.length;i++) {
+		ali[i].index = i;
+		 ali[i].onclick = function(){
+		 	for (var i=0;i<ali.length;i++) {
+//		 		console.log(i);
+				ali[i].className = "";
+				ali1[i].className = "";
+		 	}
+		 	this.className = "one";
+		 	ali1[this.index].className = "con_show";
+		 }
+	}
+</script>
+	</body>
+</html>
+

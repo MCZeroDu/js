@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			<span id="num1">01</span>
+			<span>分钟</span>
+			<span id="num2">40</span>
+			<span>秒</span>
+		</p>
+		<button id="btn">倒计时开始</button>
+	</body>
+</html>
+<script type="text/javascript">
+	var num1 = document.getElementById("num1");
+	var num2 = document.getElementById("num2");
+	var btn = document.getElementById("btn");
+	var fen = parseInt(num1.innerHTML);
+	var miao = parseInt(num2.innerHTML);
+	var timer;
+	var a = true;
+	btn.onclick = function(){
+		if(a==true){
+			timer = setInterval("jian()",1000);
+			a = false;
+		}else{
+			clearInterval(timer);
+			a = true;
+		}
+	}
+	timer = setInterval(jian(miao),1000);
+	function zero(x){
+		if(x<10){
+			return "0" + x;
+		}else{
+			return "" + x;
+		}
+	}
+	function jian(){
+		miao--;
+		if(miao>0||miao==0){
+			num2.innerHTML = zero(miao);
+		}
+		if(miao<0){
+			fen = fen-1;
+			miao = 60;
+			num1.innerHTML = zero(fen);	
+		}
+		if(fen==0&&miao==0){
+			clearInterval(timer);
+		}
+	}
+</script>

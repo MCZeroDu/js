@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="" name="" id="num1" value="" />
+		<span>vs</span>
+		<input type="" name="" id="num2" value="" />
+		<input type="button" name="" id="btn" value="最大值是" />
+		<span id="max">?</span>
+	</body>
+</html>
+<script type="text/javascript">
+	var num1 = document.getElementById("num1");
+	var num2 = document.getElementById("num2");
+	var btn = document.getElementById("btn");
+	var omax = document.getElementById("max");
+	btn.onclick = function(){
+		if(parseInt(num1.value)>parseInt(num2.value)){
+			omax.innerHTML = parseInt(num1.value);
+		}else{
+			omax.innerHTML = parseInt(num2.value);
+		}
+	}
+</script>
