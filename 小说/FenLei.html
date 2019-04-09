@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet"/>
+	</head>
+	 <script src="js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/FenLei.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+	<body>
+		<!--头部-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="myspan">返回</span></a>
+		    <h1 class="mui-title">分类</h1>
+		</header>
+		<!--主体-->
+		<div class="mui-content">
+		    <h4>男生</h4>
+		    <ul class="ul">
+		    	
+		    </ul>
+		    
+		    <h4>女生</h4>
+		    <ul class="ul">
+		    	
+		    </ul>
+		</div>
+		<!--底部-->
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon mui-icon-home"></span>
+		        <span class="mui-tab-label">首页</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-phone"></span>
+		        <span class="mui-tab-label">电话</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-email"></span>
+		        <span class="mui-tab-label">邮件</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-gear"></span>
+		        <span class="mui-tab-label">设置</span>
+		    </a>
+		</nav>
+	</body>
+</html>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var baseUrl = "http://127.0.0.1:8110";
+    var aUl = document.getElementsByClassName("ul")[0];
+    var aUl1 = document.getElementsByClassName("ul")[1];
+//  var ali = document.getElementsByTagName('li');
+//	console.log(ali.length);
+	ajax({
+        url :baseUrl + "/cats/lv2/statistics",
+        method : "get",
+        data : {},
+        success: function (response) {
+           var data1 = JSON.parse(response);
+           console.log(data1)
+//         console.log(data1.male)
+           for(var i = 0;i<data1.male.length;i++){
+           	   var li = document.createElement("li");
+           	   aUl.appendChild(li);
+			   var h5 = document.createElement("h5");
+			   h5.innerHTML = data1.male[i].name;
+			   li.appendChild(h5);
+			   var p = document.createElement("p");
+			   p.className = "myp";
+			   p.innerHTML = data1.male[i].bookCount;
+			   li.appendChild(p);
+           }
+           
+           for(var i = 0;i<data1.female.length;i++){
+           	   var li = document.createElement("li");
+           	   aUl1.appendChild(li);
+			   var h5 = document.createElement("h5");
+			   h5.innerHTML = data1.female[i].name;
+			   li.appendChild(h5);
+			   var p = document.createElement("p");
+			   p.className = "myp";
+			   p.innerHTML = data1.female[i].bookCount;
+			   li.appendChild(p);
+           }
+        },
+        async : true
+   });
+</script>
