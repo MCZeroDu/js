@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,
+			div,
+			ul,
+			li,
+			img {
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				list-style-type: none;
+			}
+			
+			.banner {
+				width: 790px;
+				border: 1px solid #f60;
+				height: 340px;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.banner span {
+				width: 50px;
+				height: 100px;
+				background-color: rgba(25, 25, 224, 0.4);
+				color: #fff;
+				text-align: center;
+				line-height: 100px;
+				font-size: 40px;
+				position: absolute;
+				top: 50%;
+				margin-top: -50px;
+				cursor: pointer;
+			}
+			
+			.banner #prev {
+				left: 30px;
+			}
+			
+			.banner #next {
+				right: 30px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="banner">
+			<ul>
+				<li><img id="pic" src="img/1.jpg" alt=""></li>
+			</ul>
+			<span id="prev">&lt;</span>
+			<span id="next">&gt;</span>
+		</div>
+
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	var Oban =  document.getElementsByClassName("banner");
+	var liimg = document.getElementById("pic");
+	var Oprev = document.getElementById("prev");
+	var Onexr = document.getElementById("next");
+	var time = 1;
+	Oprev.onclick=function(){
+		if(time <= 1){
+			time = 4;
+		}else{
+			time += 1;
+		}
+		liimg.src="img/" + time + ".jpg";
+//		console.log(time);
+	}
+	
+	Onexr.onclick=function(){
+		if(time >= 4){
+			time = 1;
+		}else{
+			time = time - 1;
+		}
+		liimg.src="img/" + time + ".jpg";
+	}
+</script>

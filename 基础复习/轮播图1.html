@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,
+			div,
+			ul,
+			li,
+			img {
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				list-style-type: none;
+			}
+			ul li{display: none;}
+			ul .tu{display: block;}
+			.banner {
+				width: 790px;
+				border: 1px solid #f60;
+				height: 340px;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.banner span {
+				width: 50px;
+				height: 100px;
+				background-color: rgba(25, 25, 224, 0.4);
+				color: #fff;
+				text-align: center;
+				line-height: 100px;
+				font-size: 40px;
+				position: absolute;
+				top: 50%;
+				margin-top: -50px;
+				cursor: pointer;
+			}
+			
+			.banner #prev {
+				left: 30px;
+			}
+			
+			.banner #next {
+				right: 30px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul>
+				<li class="tu"><img id="pic" src="img/1.jpg" alt=""></li>
+				<li><img id="pic" src="img/2.jpg" alt=""></li>
+				<li><img id="pic" src="img/3.jpg" alt=""></li>
+				<li><img id="pic" src="img/4.jpg" alt=""></li>
+			</ul>
+			<span id="prev">&lt;</span>
+			<span id="next">&gt;</span>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var Oimg = document.getElementsByTagName('li');
+//	console.log(Oimg.length);
+	var Zbtn = document.getElementById('prev');
+	var Ybtn = document.getElementById('next');                                                                                                                                                                                                                                                    
+    var index = 0;
+    //封装方法
+    function fun(index){
+		for(var i = 0; i<Oimg.length;i++){
+			Oimg[i].className = "";
+		}
+		Oimg[index].className="tu";
+	}
+    
+	//左按钮    
+	Zbtn.onclick = function(){
+		index--;
+		if (index < 0) {
+		   index = 3;
+		}
+		fun(index);
+	}
+	
+	//右按钮
+	Zbtn.onclick = function(){
+		index++;
+		if (index > 3 ) {
+		   index = 0;
+		}
+		fun(index);
+	}
+</script>

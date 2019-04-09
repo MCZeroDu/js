@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 500px;height: 500px;background:url(img/chun.jpg) no-repeat;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<select name="" id="XX">
+				<option value="">春分时节</option>
+				<option value="">夏日炎炎</option>
+				<option value="">秋风瑟瑟</option>
+				<option value="">冬天的雪</option>
+			</select>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 * 对于以下select标签，获取当前选择的值得方式如下：
+		<select id="test" name=""> 
+		<option value="1">text1</option> 
+		<option value="2">text2</option> 
+		</select>
+		一：javascript原生的方法
+		1:拿到select对象： var myselect=document.getElementById("test");
+		2：拿到选中项的索引：var index=myselect.selectedIndex ;
+		// selectedIndex代表的是你所选中项的index
+		3:拿到选中项options的value： myselect.options[index].value;
+		4:拿到选中项options的text： myselect.options[index].text; 
+	 */
+	var sete = document.getElementById('XX');
+	var Box = document.getElementById("box");
+//	console.log(bob.length);
+sete.onchange = function(){
+	var index=sete.selectedIndex;//代表你所选中的index;
+	var bob = sete.options[index].text;//拿到选中的项options的text;
+		if (bob == "春分时节") {
+			Box.style.background = "url(img/chun.jpg)no-repeat";
+		} else if(bob == "夏日炎炎"){
+			Box.style.background = "url(img/xia.jpg)no-repeat";
+		}else if(bob == "秋风瑟瑟"){
+			Box.style.background = "url(img/qiu.jpg)no-repeat";
+		}else if(bob == "冬天的雪"){
+			Box.style.background = "url(img/dong.jpg)no-repeat";
+		}	
+		
+	}
+</script>

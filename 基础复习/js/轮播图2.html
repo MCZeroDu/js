@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <style>
+         body,div,ul,li,img{margin: 0; padding: 0;}
+         ul{list-style-type: none;}
+        .oUl li{
+         	display: none;
+         }
+         ul li.nn{
+         	display: block;
+            width: 790px;
+            border: 1px solid #f60;
+            height: 340px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .banner span{
+            width: 50px;
+            height: 100px;
+            background-color: rgba(25,25,224,0.4);
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            cursor: pointer;
+        }
+        .banner #prev{
+            left: 30px;
+        }
+        .banner #next{
+            right: 30px;
+        }
+        .oU_two{
+        	display: block;
+        }
+        .banner .oUl div{
+        	display: block;
+        	float: left;
+        	width: 10px;
+        	height: 10px;
+        	background: #0000FF;
+        	margin-left: 30px;
+        	position: relative;
+        	left: 200px;
+        	bottom: 130px;
+        }
+       .banner .oUl .sss{
+        	background: #F5F5DC;
+        }
+    </style>
+	</head>
+	<body>
+		
+<div class="banner">
+    <ul class="oUl" >
+        <li class="nn"><img class="pic" src="img/chun.jpg" alt=""></li>
+        <li><img  src="img/dong.jpg" alt=""></li>
+        <li><img  src="img/qiu.jpg" alt=""></li>
+        <li><img  src="img/xia.jpg" alt=""></li>
+        <div class="spo sss"></div>
+        <div class="spo"></div>
+        <div class="spo"></div>
+    </ul>
+    <span id="prev">&lt;</span>
+    <span id="next">&gt;</span>
+</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oimg = document.getElementById("pic");
+	var oPrev = document.getElementById("prev");
+	var oEext = document.getElementById("next");
+	var oLi  = document.getElementsByTagName("li");
+	var oSpo = document.getElementsByClassName("spo");
+//	console.log(oSpo.length);
+	var num = 0;
+	
+	oPrev.onclick=function(){
+		num--;
+		if(num <0)
+			num = 3;
+		fu(num);	
+	}
+	oEext.onclick=function(){
+		num++;
+		if(num >3)
+			num = 1;
+		fu(num);	
+	}
+	
+	
+	function fu(num){
+		for(var i =0;i<oLi.length;i++){
+			for(var i =0;i<oLi.length;i++){
+				oLi[i].className ="";
+				oSpo[i].className = "spo"; 
+			}
+			oLi[num].className="nn";
+		 	oSpo[num].className = "spo sss";
+		} 	
+	}
+	for(var i = 0;i<oSpo.length;i++){
+//		oSpo[i].num = i;
+		oSpo[i].onclick=function(){
+		num = this.i;
+		fu(num);
+	}
+	}
+	
+	
+</script>

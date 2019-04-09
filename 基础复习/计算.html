@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="na1" id="na1" value="" />
+		<select name="" id="txt">
+			<option value="">+</option>
+			<option value="">-</option>
+			<option value="">*</option>
+			<option value="">/</option>
+		</select>
+		<input type="text" name="na2" id="na2" value="" />
+		<input type="button" id="btn" value="求值" />
+		<strong id="he"></strong>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 * 对于以下select标签，获取当前选择的值得方式如下：
+		<select id="test" name=""> 
+		<option value="1">text1</option> 
+		<option value="2">text2</option> 
+		</select>
+		一：javascript原生的方法
+		1:拿到select对象： var myselect=document.getElementById("test");
+		2：拿到选中项的索引：var index=myselect.selectedIndex ;
+		// selectedIndex代表的是你所选中项的index
+		3:拿到选中项options的value： myselect.options[index].value;
+		4:拿到选中项options的text： myselect.options[index].text; 
+	 */
+	var num1 = document.getElementById('na1');
+//	var op = document.getElementsByTagName('option');
+//	console.log(op.length);
+	var fu = document.getElementById('txt');
+//	console.log(fu)
+	var num2 = document.getElementById('na2');
+	var Btn = document.getElementById('btn');
+	var he = document.getElementById('he');
+	Btn.onclick = function(){
+		var a = parseInt(num1.value);
+		var b = parseInt(num2.value);
+		var index = fu.selectedIndex;
+		var nima = fu.options[index].text; 
+			if (nima == "+") {
+			he.innerHTML = a+b;
+		}else if(nima =="-"){
+			he.innerHTML = a-b;
+		}else if(nima == "*"){
+			he.innerHTML = a*b;
+		}else if(nima == "/"){
+			he.innerHTML = a/b;
+		}
+		
+	}
+</script>

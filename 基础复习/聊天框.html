@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		    <style>
+        html,body,div,p,span{margin: 0; padding: 0;}
+        .box{
+            width: 598px;
+            height: 537px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            background: url("img/chat.png") no-repeat;
+            position: relative;
+        }
+        .box .content{
+            width: 398px;
+            height: 333px;
+            position: absolute;
+            left: 0;
+            top: 81px;
+        }
+        .box input{
+            width: 397px;
+            height: 85px;
+            position: absolute;
+            bottom: 0;
+            border: none;
+            background: #eee;
+            outline: none;
+        }
+        .box .btn{
+            position: absolute;
+            right: 198px;
+            bottom: 0;
+            z-index: 10;
+            background: red;
+            width: 40px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .box p{
+            padding-left: 40px;
+        }
+        .box span{
+            color: red;
+        }
+        #inner{
+        	margin-right: 5px;
+        	float: right;
+        	/*width: 50px;
+        	height: 20px;*/
+        	padding: 0;
+        	background: red;
+        	margin-top: 300px;
+        	border-radius:5px;
+        }
+    </style>
+	</head>
+	<body>
+	<div class="box">
+    <!--聊天内容-->
+    <div id="content" class="content">
+    	
+    	<p id="inner"></p>
+    </div>
+    <!--输入内容-->
+    <input type="text" id="text" class="text">
+    <!--发送按钮-->
+    
+    <input type="button" id="btn" value="发送" class="btn">
+</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+	var Obox = document.getElementById('content');
+	var Oinner=document.getElementById('text');
+	var Btn = document.getElementById('btn');
+	var bb = document.getElementById('inner');
+	Btn.onclick = function(){
+		bb.innerHTML = Oinner.value;
+	}
+</script>
+	
