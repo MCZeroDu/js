@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet"/>
+	</head>
+	 <script src="js/mui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="css/AddBook.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+    <style type="text/css">
+    	.mui-content .Btn{background: #CCCCCC;padding: .25rem 1rem;width: 5rem;color: #FFFFFF;font-size: 1rem;font-family: "微软雅黑";font-weight:500;letter-spacing: .3rem;margin: auto;margin-top: 15rem;text-align: center;border-radius:.3rem;}
+    </style>
+	<body>
+		<!--头部-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="myspan">返回</span></a>
+		    <h1 class="mui-title">书架</h1>
+		</header>
+		<div class="mui-content">
+				<ul class="mui-table-view">
+			   	    <!--<li class="mui-table-view-cell mui-media">
+			   	        <a href="javascript:;">
+			   	        	<!--图-->
+			   	            <!--<div id="img"> 
+			   	            	<img src="" alt="" id="po"/>
+			   	            </div>
+			   	            <div class="mui-media-body">
+			   	            	<p class="ShuMing" id="pio"></p>
+			   	            	<p class="Z" id="Z"></p>
+			   	                <p class="mui-ellipsis">11小时前 | 1159万 | 东方玄幻</p>
+			   	            </div>
+			   	        </a>
+			   	    </li>-->
+		   	</ul>			
+		    <div class="Btn">添加</div>
+		</div>
+		<!--底部-->
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon mui-icon-home"></span>
+		        <span class="mui-tab-label">书架</span>
+		    </a>
+		    <a href="FenLei.html">
+		        <span class="mui-icon mui-icon-phone"></span>
+		        <span class="mui-tab-label">分类</span>
+		    </a>
+		    <a  class="mui-tab-item">
+		        <span class="mui-icon mui-icon-email"></span>
+		        <span class="mui-tab-label">排行</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-gear"></span>
+		        <span class="mui-tab-label">搜索</span>
+		    </a>
+		</nav>
+	</body>
+</html>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var baseUrl = "http://127.0.0.1:8888";
+    var fts = document.getElementsByClassName("mui-table-view")[0];
+    var dic = document.getElementById('Zi');
+	var Box = document.getElementsByClassName("Btn")[0];
+dedcsxcxc	Box.onclick = function(){
+		location.href = "FenLei.html";
+	}
+	var Books = localStorage.getItem("array");
+	Bookse = new Set(Books);
+//	var did = localStorage.getItem("BId")
+	if (Books != null && Bookse) {
+		Books = Books.replace("[","")
+		Books = Books.replace(/\"/g,"")
+		Books = Books.replace("]","")
+		var b = Books.split(",")
+		console.log(b)
+		
+	    Box.style.display="none";
+	    fts.style.display="block";
+	    for(var i = 0; i < b.length; i++){
+	ajax({
+		url: baseUrl + "/book/" + b[i],
+		method: "get",
+		data: {},
+		success: function(response) {
+			var data1 = JSON.parse(response)
+				
+		    var li = document.createElement("li");
+		    li.className="mui-table-view-cell mui-media";
+		    fts.appendChild(li);
+		    
+		    var div = document.createElement("div");
+		    div.id = "img";
+		    li.appendChild(div);
+		   
+		    var imgad = document.createElement("img");
+		    imgad.src = data1.cover; //图片
+		    div.appendChild(imgad);
+		    
+		    var diva = document.createElement("div");
+		    li.appendChild(diva);
+		    diva.className = "mui-media-body";
+		    diva.innerHTML=data1.title;//书名
+		     
+		    var p1 = document.createElement("p");
+		    diva.appendChild(p1);
+		    p1.innerHTML = data1.author;//作者
+		    
+		},
+		async: true
+   });
+   }
+	}
+</script>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+		<!--头部-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="myspan">返回</span></a>
+		    <h1 class="mui-title">排行</h1>
+		</header>
+			<!--身体-->
+			<div class="mui-content">
+			    <ul id="myul">
+			    	<h4>男生</h4>
+			    	
+			    </ul>
+			    <ul id="myul">
+			    	<h4>女生</h4>
+			    	
+			    </ul>
+			</div>
+		<!--底部-->
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon mui-icon-home"></span>
+		        <span class="mui-tab-label">书架</span>
+		    </a>
+		    <a class="mui-tab-item" href="FenLei.html">
+		        <span class="mui-icon mui-icon-phone"></span>
+		        <span class="mui-tab-label">分类</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-email"></span>
+		        <span class="mui-tab-label">排行</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-gear"></span>
+		        <span class="mui-tab-label">搜索</span>
+		    </a>
+		</nav>
+</body>
+
+</html>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var aul = document.getElementById('myul');
+    var baseUrl = "http://127.0.0.1:8888";
+    var aUl = document.getElementsByTagName("ul");
+    ajax({
+        url :baseUrl + "/ranking/gender",
+        method : "get",
+        data : {},
+        success: function (response) {
+            console.log(JSON.parse(response));
+            var data = JSON.parse(response);
+//          console.log(response)
+            for(var i=0;i<data.male.length;i++){
+                var li = document.createElement("li");
+                li.innerHTML = data.male[i].title;
+                aUl[0].appendChild(li);
+//              console.log(data.male.title);
+				var p = document.createElement('p');
+				p.className = "lop";
+				p.innerHTML = data.male[i]._id;
+				aUl[0].appendChild(p);
+            }
+            for(var i=0;i<data.female.length;i++){
+                var li = document.createElement("li");
+                li.innerHTML = data.female[i].title;
+                aUl[1].appendChild(li);
+                var p = document.createElement('p');
+				p.className = "lop";
+				p.innerHTML = data.male[i]._id;
+				aUl[0].appendChild(p);
+            }
+            var uli = document.getElementsByTagName('li');	
+			for(var i = 0; i < uli.length; i++) {
+				uli[i].index = i;
+				var lp = document.getElementsByTagName("p");
+				uli[i].onclick = function() {
+					alert(11)
+				  for (var s =0;s<lp.length;s++) {
+				  	localStorage.setItem("JI", lp[this.index].innerHTML);
+				  	console.log(uli[this.index].innerHTML);
+				  	location.href = "PhB.html";
+				  }
+				}
+			}
+        },
+        async : true
+    })
+    </script>

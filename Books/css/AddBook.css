@@ -1,0 +1,22 @@
+#img{width: 4rem;height: 5rem;border: .1rem solid #000000;float: left;margin-right: 1rem;}
+#jp {text-align: center;width: 90%;margin: auto;margin-top: 1rem;}
+#jp button{width: 7rem;background: #03A9F4;border: none;color: #FFFFFF;}
+#jp .btn{float: left;}
+#jp .btn1{float: right;}
+.mui-content>.mui-table-view:first-child{margin-top:0;}
+.mui-table-view{display: none;}
+.R{width: 100%;height: auto;overflow: hidden;border-bottom: .03rem solid #CCCCCC;padding: .5rem 0;}
+.R .aul{width: 90%;margin: auto;}
+.R .aul .Ali{
+	float: left;
+	text-align: center;
+	margin-left: 3rem;
+}
+.S{width: 100%;height: auto;overflow: hidden;border-bottom: .03rem solid #CCCCCC;}
+.S button{padding: .07rem .5rem;}
+.Zi{padding: .5rem;}
+.S .hp button:first-child{background: #EC971F;color:#fff;}
+.S .hp button:nth-child(2){background:#009688;color:#fff;}
+.S .hp button:nth-child(3){background: ;color:#fff;}
+.S {padding: .5rem;}
+.S .hp{margin-bottom: .4rem;}

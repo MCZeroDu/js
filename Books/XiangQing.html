@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="css/Xiang.css"/>
+	</head>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+	<body>
+		<!--头部-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="myspan"></span></a>
+		    <h1 class="mui-title">书名</h1>
+		</header>
+		<div class="mui-content">
+		   	<ul class="mui-table-view">
+		   	    <li class="mui-table-view-cell mui-media">
+		   	        <a href="javascript:;">
+		   	        	<!--图-->
+		   	            <div id="img"> 
+		   	            	<img src="" alt="" id="po"/>
+		   	            </div>
+		   	            <div class="mui-media-body">
+		   	            	<p class="ShuMing" id="pio"></p>
+		   	            	<p class="Z" id="Z"></p>
+		   	                <p class="mui-ellipsis">11小时前 | 1159万 | 东方玄幻</p>
+		   	            </div>
+		   	        </a>
+		   	    <p id="jp"><button class="btn" id="Add">追更新</button> <button class="btn1" id="btna">开始阅读</button></p>
+		   	    </li>
+		   	</ul>
+		   	<div class="R">
+		   		<ul class="aul">
+		   			<li class="Ali">追书神器<p>958851</p></li>
+		   			<li class="Ali">追书神器<p>958851</p></li>
+		   			<li class="Ali">追书神器<p>958851</p></li>
+		   		</ul>
+		   	</div>
+		   	<div class="S">
+		   		<p class="hp"> <button>玄幻</button> <button>玄幻</button> <button>玄幻</button> <button>玄幻</button></p>
+		   		<p><button>升级练功</button> <button>东方玄幻</button></p>
+		   	</div>
+		   	<div class="Zi" id="Zi">
+		   		
+		   	</div>
+		</div>
+	</body>
+</html>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var baseUrl = "http://127.0.0.1:8888";
+    var imgad = document.getElementById('po'); // 图片
+//  console.log(imgad + "1")
+    var div = document.getElementById('pio'); // 书名
+//  console.log(div1+ "2")
+    var zs=document.getElementById("Z"); // 作者
+//  console.log(z  + "3");
+    var dxv = localStorage.getItem('BId');
+//  console.log(dxv)
+    var dic = document.getElementById('Zi');
+    //开始阅读
+    var btns = document.getElementById('btna');
+//  console.log(btns)
+	
+	btns.onclick = function(){
+		   	ajax({
+				url: baseUrl + "/atoc",
+				method: "get",
+				data: {
+					view:"summary",			
+					book:dxv
+				},
+				success: function(response) {
+					var data3 = JSON.parse(response);
+					console.log(data3)
+					for(var i=0;i<data3.length;i++){
+						console.log(data3[i]._id);
+						if (i==0) {
+							localStorage.setItem("dxs1",data3[i]._id);
+							location.href = "ZhangJie.html";
+						}
+					}
+				},
+				async: true
+		    });	   	
+	}
+var Add = document.getElementById("Add");
+var array = [];//创建数组
+   Add.onclick = function(){
+	 //保留数据
+	 if(localStorage.getItem("array")){
+	 	array=JSON.parse(localStorage.getItem("array"));
+	 }
+	 array.push(dxv);
+	 localStorage.setItem("array",JSON.stringify(array));
+   }
+    ajax({
+		url: baseUrl + "/book/" + dxv,
+		method: "get",
+		data: {},
+		success: function(response) {
+//			console.log(JSON.parse(response));
+			var data1 = JSON.parse(response)
+				
+				imgad.src = data1.cover; //图片
+				
+				div.innerHTML=data1.title;//书名
+				
+				zs.innerHTML=data1.author;//作者
+				
+				dic.innerHTML=data1.longIntro;
+		},
+		async: true
+    });
+</script>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="css/Shu.css"/>
+	</head>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+	<body>
+		<!--头部-->
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="myspan">返回</span></a>
+		    <h1 class="mui-title"></h1>
+		</header>
+		<div class="mui-content">
+		   	<p class="mypq"><span>热门</span><span>新书</span><span>好评</span><span>完结</span><span>包月</span></p>
+		   	<p class="myp"></p>
+			<ul class="mui-table-view" style="background: #EEEEEE;"></ul>
+		</div>
+	</body>
+</html>
+<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var baseUrl = "http://127.0.0.1:8888";
+	var odiv = document.getElementsByClassName('mui-content')[0];
+	var ul = odiv.getElementsByClassName("mui-table-view")[0];
+	var myps = odiv.getElementsByClassName('myp')[0];
+	var BiaoTi = document.getElementsByClassName('mui-title')[0];
+	ajax({
+		url: baseUrl + "	/cats/lv2",
+		method: "get",
+		data: {},
+		success: function(response) {
+			//男生的读书信息
+			var data1 = JSON.parse(response).male;
+			console.log(data1)
+			for(var i = 0; i < data1.length; i++) {
+				if(data1[i].major == k) {
+					for(var x = 0; x < data1[i].mins.length; x++) {
+						var span = document.createElement('span');
+						span.className = "srpan";
+						myps.appendChild(span);
+						span.innerHTML = data1[i].mins[x];
+						console.log(data1[i].mins[x]);
+					}
+					BiaoTi.innerHTML = data1[i].major;
+					var oMyp = document.getElementsByClassName("myp")[0];
+					var oSpan = oMyp.getElementsByTagName("span");
+					for(var i = 0 ; i < oSpan.length ; i++){
+						oSpan[i].index = i;
+						oSpan[i].onclick = function(){
+							var awe = localStorage.setItem("Nbkls",oSpan[this.index].innerHTML);
+						}
+					}
+				}
+			}
+			//女生的读书信息
+			var data2 = JSON.parse(response).female;
+			for(var i = 0; i < data2.length; i++) {
+				if(data2[i].major == k) {
+					for(var x = 0; x < data1[i].mins.length; x++) {
+						var span = document.createElement('span');
+						span.className = "srpan";
+						myps.appendChild(span);
+						span.innerHTML = data2[i].mins[x];
+					}
+					BiaoTi.innerHTML = data2[i].major;
+				}
+			}
+		},
+		async: true
+	})
+
+	var k = localStorage.getItem("Aname");
+	ajax({
+		url: baseUrl + "/book/by-categories",
+		method: "get",
+		data: {
+			major: k
+		},
+		success: function(response) {
+			console.log(JSON.parse(response).books);
+			var data2 = JSON.parse(response).books;
+//						console.log(data2);
+			for(var i = 0; i < data2.length; i++) {
+				var li = document.createElement('li');
+				li.className = "mui-table-view-cell mui-media";
+				ul.appendChild(li);
+				
+				var b = document.createElement('b');
+				li.appendChild(b);
+				b.innerHTML=data2[i]._id;
+				
+				var div = document.createElement('div');
+				div.id = "tu";
+				li.appendChild(div);
+	            
+				var img = document.createElement('img');
+				div.appendChild(img);
+				img.src = data2[i].cover //图片
+				
+				var div1 = document.createElement('div');
+				div1.className = "mui-media-body";
+				li.appendChild(div1);
+				div1.innerHTML = data2[i].title; //书名
+	
+				var mp = document.createElement('p');
+				mp.className = "mui-media-body";
+				div1.appendChild(mp);
+				mp.innerHTML = data2[i].author; //作者
+	
+				var mp1 = document.createElement('p');
+				mp1.className = "mui-ellipsis";
+				div1.appendChild(mp1);
+				mp1.innerHTML = data2[i].shortIntro; //简介
+				
+				
+				var mp = document.createElement('p');
+				mp.className = "mui-media-body";
+				div1.appendChild(mp);
+				mp.innerHTML = data2[i].latelyFollower; //人气度
+			}
+			var kli = document.getElementsByTagName('li');
+//			console.log(kli.length);
+			for (var i=0;i < kli.length;i++) {
+				kli[i].index = i;
+				var lp = document.getElementsByTagName('b');
+				kli[i].onclick = function() {
+					alert(111);
+					for (var i=0;i<lp.length;i++) {
+						localStorage.setItem("BId", lp[this.index].innerHTML);
+						console.log(lp[this.index].innerHTML);
+						location.href = "XiangQing.html";
+					}
+//					alert(1111);
+				}
+			}
+			
+		},
+		async: true
+	})
+</script>
